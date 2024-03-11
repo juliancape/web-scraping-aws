@@ -1,0 +1,13 @@
+{
+    "dev": {
+        "app_function": "descarga_html.get_html",
+        "aws_region": "us-east-1",
+        "project_name": "web-scraping-aws",
+        "runtime": "python3.10",
+        "s3_bucket": "zappa-bucket-julian",
+        "keep_warm": false,
+        "apigateway_enabled": false,
+        "manage_roles": false,
+        "role_name": "LabRole"
+    }
+}
