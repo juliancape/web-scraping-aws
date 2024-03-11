@@ -1,5 +1,5 @@
 {
-    "dev": {
+    "dev_descarga": {
         "app_function": "descarga_html.get_html",
         "aws_region": "us-east-1",
         "project_name": "web-scraping-aws",
@@ -8,6 +8,30 @@
         "keep_warm": false,
         "apigateway_enabled": false,
         "manage_roles": false,
-        "role_name": "LabRole"
+        "role_name": "LabRole",
+        "events": [{
+            "function": "descarga_html.get_html",
+            "expression": "cron(03 01 * * ? *)"
+        }]
+    },
+    "dev_transform": {
+        "app_function": "transformar_html.transform_html",
+        "keep_warm": false,
+        "role_name": "LabRole",
+        "manage_roles": false,
+        "apigateway_enabled": false,
+        "aws_region": "us-east-1",
+        "project_name": "web-scraping-transform-aws",
+        "runtime": "python3.10",
+        "s3_bucket": "zappa-bucket-julian",
+        "events": [{
+            "function": "transformar_html.transform_html",
+            "event_source": {
+                  "arn":  "arn:aws:s3:::zappa-bucket-julian",
+                  "events": [
+                    "s3:ObjectCreated:*"
+                  ]
+               }
+            }]
     }
 }
