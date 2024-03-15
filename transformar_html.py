@@ -26,7 +26,7 @@ def transform_html(test=False):
             'floor_area': card.get('data-floorarea', ''),
             'viewed': card.get('data-viewed', '')
         }
-        print(data)
+        return data
     else:
         s3 = boto3.client('s3')
         bucket_name = 'zappa-bucket-julian-descargar'
